@@ -1,5 +1,5 @@
 /**
- * CamRecorderAudio
+ * CamRecorder
  *
  * @file Records video (and optionally audio) from input devices.
  * @version 0.5

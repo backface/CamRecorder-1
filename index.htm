@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<title>CamRecorder</title>
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+	<body>
+		<div id="container">
+			<h1>CamRecorder</h1>
+			<video id="cam" playsinline autoplay muted></video>
+			<video id="recorded" controls playsinline></video>
+			<div class="row">
+				<input id="audio" type="checkbox" checked><label for="audio"> Record Audio</label>
+			</div>
+			<div class="row">
+				<button id="record">Record Clip</button>
+				<button id="save" disabled>Save Clip</button>
+				<button id="upload" disabled>Upload Clip</button>
+			</div>
+			<div id="status-display"></div>
+		</div>
+		<!-- webrtc version -->
+		<!-- <script src="//webrtc.github.io/adapter/adapter-latest.js"></script> -->
+		<!-- temasys version-->
+		<script src="js/adapter.min.js"></script>
+		<script src="js/recorder.js"></script>
+		<script src="js/mjpegaudio.js"></script>
+		<script src="js/camrecorder.js"></script>
+		<script src="js/main_camrecorder.js" async></script>
+	</body>
+</html>

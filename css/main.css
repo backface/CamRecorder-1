@@ -1,0 +1,117 @@
+/*
+ *	Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
+ *
+ *	Use of this source code is governed by a BSD-style license
+ *	that can be found in the LICENSE file in the root of the source
+ *	tree.
+ */
+.hidden {
+	display: none;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	margin: 0;
+	padding: 1em;
+	word-break: break-word;
+}
+
+h1 {
+	border-bottom: 1px solid #ccc;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	margin: 0 0 0.8em 0;
+	padding: 0 0 0.2em 0;
+}
+
+button {
+	background-color: #d84a38;
+	border: none;
+	border-radius: 2px;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-size: 0.8em;
+	margin: 0 0 1em 0;
+	padding: 0.5em 0.7em;
+	cursor: pointer;
+}
+
+button:active {
+	background-color: #cf402f;
+}
+
+button:hover {
+	background-color: #cf402f;
+}
+
+button[disabled] {
+	color: #ccc;
+	cursor: default;
+}
+
+button[disabled]:hover {
+	background-color: #d84a38;
+}
+
+canvas {
+	background-color: #ccc;
+	max-width: 100%;
+}
+/*
+img#play-back {
+	border: none;
+	max-width: 100%;
+}
+*/
+video {
+	background: #222;
+	max-width: 100%;
+	display:block;
+	margin: 0 0 10px 0;
+	width: 480px;
+	/*height: auto;*/
+	height: 360px;
+}
+
+audio {
+	display:block;
+	max-width: 100%;
+	width: 480px;
+	margin: 0 0 20px 0;
+}
+
+#status-display {
+	font-size: 0.8em;
+
+}
+
+#container {
+	margin: 0 auto 0 auto;
+	/*max-width: 40em;*/
+}
+
+div.row {
+	margin-bottom: 10px;
+}
+
+@media screen and (max-width: 650px) {
+	h1 {
+		font-size: 24px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	button:active {
+		background-color: darkRed;
+	}
+	h1 {
+		font-size: 22px;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	h1 {
+		font-size: 20px;
+	}
+}

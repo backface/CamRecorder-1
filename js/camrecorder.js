@@ -2,7 +2,7 @@
  * CamRecorder
  *
  * @file Records video (and optionally audio) from input devices.
- * @version 0.5
+ * @version 1.0
  *
  * -- MIT License
  *

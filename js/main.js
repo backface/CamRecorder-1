@@ -14,6 +14,7 @@ var buttonUpload = document.querySelector('button#upload');
 var checkboxAudio = document.querySelector('input#audio');
 
 var camRecorder = new CamRecorder(videoCamera, checkboxAudio.checked, VIDEO_WIDTH, VIDEO_HEIGHT, VIDEO_FPS);
+camRecorder.init();
 
 function logStatus(msg) {
 	//console.log(msg);

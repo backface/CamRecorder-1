@@ -2,7 +2,7 @@
  * CamRecorder
  *
  * @file Records video (and optionally audio) from input devices.
- * @version 0.5
+ * @version 0.6
  *
  * -- MIT License
  *
@@ -82,32 +82,35 @@
 		}
 
 		console.log('Using MimeType: '+this._mimeType);
-
-		// init camera stream
-		navigator.mediaDevices.getUserMedia({
-				audio: this._audio,
-				video: {
-					width: {ideal: this._videoWidth},
-					height: {ideal: this._videoHeight},
-					//aspectRatio: {ideal: 1.3333333333},
-					frameRate: {ideal: this._fps},
-				}
-			})
-			.then((stream) => {
-				this._stream = stream;
-				this._videoElement = attachMediaStream(this._videoElement, stream);
-
-				if (this._audio && !this._hasMediaRecorder){
-					var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-					var sourceNode = audioCtx.createMediaStreamSource(stream);
-					this._wavrec = new Recorder(sourceNode);
-				}
-			})
-			.catch((e) => {
-				console.error(e);
-			});
 	};
 
+	/**
+	 * Initializes input devices (camera and optionally microphone)
+	 */
+	CamRecorder.prototype.init = function(){
+		navigator.mediaDevices.getUserMedia({
+			audio: this._audio,
+			video: {
+				width: {ideal: this._videoWidth},
+				height: {ideal: this._videoHeight},
+				//aspectRatio: {ideal: 1.3333333333},
+				frameRate: {ideal: this._fps},
+			}
+		})
+		.then((stream) => {
+			this._stream = stream;
+			this._videoElement = attachMediaStream(this._videoElement, stream);
+			if (this._audio && !this._hasMediaRecorder){
+				var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+				var sourceNode = audioCtx.createMediaStreamSource(stream);
+				this._wavrec = new Recorder(sourceNode);
+			}
+		})
+		.catch((e) => {
+			console.error(e);
+		});
+	};
+	
 	/**
 	 * Starts recording
 	 */

@@ -6,7 +6,7 @@
  *
  * -- MIT License
  *
- * Copyright (c) 2020 Valentin Schmida
+ * Copyright (c) 2020 Valentin Schmidt
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this
  * software and associated documentation files (the "Software"), to deal in the Software
@@ -147,7 +147,6 @@
 			this._mediaRecorder.stop();
 		}else{
 			clearInterval(this._rec);
-
 			if (this._audio){
 				this._wavrec.stop();
 				if (console.time) console.time('Encoding Audio');

@@ -265,7 +265,7 @@
 				var _abtempDWORD = new ArrayBuffer(4);
 				var _u8tempDWORD = new Uint8Array(_abtempDWORD);
 
-				_u8tempDWORD[0] =  val        & 0xff;
+				_u8tempDWORD[0] =  val		& 0xff;
 				_u8tempDWORD[1] = (val >> 8)  & 0xff;
 				_u8tempDWORD[2] = (val >> 16) & 0xff;
 				_u8tempDWORD[3] = (val >> 24) & 0xff;
@@ -275,7 +275,7 @@
 				var _abtempWORD = new ArrayBuffer(2);
 				var _u8tempWORD = new Uint8Array(_abtempWORD);
 
-				_u8tempWORD[0] =  val        & 0xff;
+				_u8tempWORD[0] =  val		& 0xff;
 				_u8tempWORD[1] = (val >> 8)  & 0xff;
 				bb.push(_abtempWORD);
 				break
@@ -284,7 +284,7 @@
 				var _u8tempWORD = new Uint8Array(_abtempWORD);
 
 				_u8tempWORD[0] = (val >> 8)  & 0xff;
-				_u8tempWORD[1] =  val        & 0xff;
+				_u8tempWORD[1] =  val		& 0xff;
 				bb.push(_abtempWORD);
 				break
 			case 'a': // Array of structured data
@@ -416,17 +416,17 @@
 			wRight: 0,
 			wBottom: 0,
 			_order:[
-				 'chFourCC', 'dwSize', 'chTypeFourCC', 'chHandlerFourCC',
-				 'dwFlags', 'wPriority', 'wLanguage', 'dwInitialFrames', 'dwScale',
-				 'dwRate', 'dwStart', 'dwLength', 'dwSuggestedBufferSize',
-				 'dwQuality', 'dwSampleSize', 'wLeft', 'wTop', 'wRight', 'wBottom'
-				]
+				'chFourCC', 'dwSize', 'chTypeFourCC', 'chHandlerFourCC',
+				'dwFlags', 'wPriority', 'wLanguage', 'dwInitialFrames', 'dwScale',
+				'dwRate', 'dwStart', 'dwLength', 'dwSuggestedBufferSize',
+				'dwQuality', 'dwSampleSize', 'wLeft', 'wTop', 'wRight', 'wBottom'
+			]
 		};
 	};
 
 	MJPEGBuilder.createBitmapHeader = function() {
 		return {
-			dwSize:    40,
+			dwSize:	40,
 			dwWidth:   10,
 			dwHeight:  20,
 			wPlanes:   1,

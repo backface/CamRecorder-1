@@ -62,8 +62,8 @@ buttonUpload.addEventListener('click', (e) => {
 		function(ok, e){
 			if (ok) logStatus('The clip was uploaded successfully \\o/');
 			else logStatus('Uploading the clip failed :-(');
-	        if (e.target.responseText) alert(e.target.responseText);
-	        buttonUpload.disabled = false;
+			//if (e.target.responseText) alert(e.target.responseText);
+			buttonUpload.disabled = false;
 		},
 		function(prog){
 			logStatus('Uploading clip ['+Math.ceil(100*prog)+'%]');

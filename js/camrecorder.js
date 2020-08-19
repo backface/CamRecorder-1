@@ -200,10 +200,10 @@
 		var a = document.createElement('a');
 		document.body.appendChild(a);
 		a.style = 'display: none';
-	    var url = window.URL.createObjectURL(this._blob);
-	    a.href = url;
-	    a.download = basename+'.'+this._container;
-	    a.click();
+		var url = window.URL.createObjectURL(this._blob);
+		a.href = url;
+		a.download = basename+'.'+this._container;
+		a.click();
 		setTimeout(() => {
 			document.body.removeChild(a);
 			window.URL.revokeObjectURL(url);
@@ -221,18 +221,18 @@
 	 */
 	CamRecorder.prototype.upload =  function (url, varName, basename, postVars, cbLoaded, cbProgress) {
 		if (!basename) basename = 'recording';
-	    var fd = new FormData();
-	    fd.append(varName, this._blob, basename+'.'+this._container);
-	    if (postVars){
-	    	for (var k in postVars) fd.append(k, postVars[k]);
-	    }
-	    var xhr = new XMLHttpRequest();
-	    xhr.addEventListener('load', function(e) {
-	    	cbLoaded(true, e);
-	    }, false);
-	    xhr.addEventListener('error', function(e) {
-	    	cbLoaded(false, e);
-	    }, false);
+		var fd = new FormData();
+		fd.append(varName, this._blob, basename+'.'+this._container);
+		if (postVars){
+			for (var k in postVars) fd.append(k, postVars[k]);
+		}
+		var xhr = new XMLHttpRequest();
+		xhr.addEventListener('load', function(e) {
+			cbLoaded(true, e);
+		}, false);
+		xhr.addEventListener('error', function(e) {
+			cbLoaded(false, e);
+		}, false);
 		if (xhr.upload && cbProgress) {
 			xhr.upload.onprogress = function(e){
 				if (e.lengthComputable) {
@@ -240,8 +240,8 @@
 				}
 			}
 		}
-	    xhr.open('POST', url);
-	    xhr.send(fd);
+		xhr.open('POST', url);
+		xhr.send(fd);
 	};
 
 	// export

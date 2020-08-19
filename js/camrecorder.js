@@ -3,6 +3,9 @@
  *
  * @file Records video (and optionally audio) from input devices.
  * @version 0.6
+ * @class
+ * @requires mjpegaudio.js (for Safari only)
+ * @requires recorder.js (for audio support in Safari only)
  *
  * -- MIT License
  *

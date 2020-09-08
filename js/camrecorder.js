@@ -246,6 +246,7 @@
 			}
 		}
 		xhr.open('POST', url);
+		xhr.withCredentials = true;
 		xhr.send(fd);
 	};
 

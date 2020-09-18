@@ -40,7 +40,7 @@
 	 * @param {number} videoHeight
 	 * @param {number} fps
 	 */
-	var CamRecorder = function(videoElement, recordAudio, videoWidth, videoHeight, fps){
+	var CamRecorder = function(videoElement, recordAudio, videoWidth, videoHeight, fps, isiPhone){
 
 		this._hasMediaRecorder = typeof window.MediaRecorder != 'undefined';
 		console.log('Native MediaRecorder: '+(this._hasMediaRecorder?'yes':'no'));
@@ -50,6 +50,7 @@
 		this._videoHeight = videoHeight;
 		this._fps = fps;
 		this._audio = recordAudio;
+		this._isiPhone = isiPhone;
 
 		if (this._hasMediaRecorder){
 			if (MediaRecorder.isTypeSupported){
@@ -87,6 +88,22 @@
 		console.log('Using MimeType: '+this._mimeType);
 	};
 
+	CamRecorder.prototype.adaptDimensions = function(width, height) {
+
+		this._videoWidth = width;
+		this._videoHeight = height;
+
+		if (this._canvas) {
+			this._canvas.width = this._videoWidth;
+			this._canvas.height = this._videoHeight;
+		}
+
+		if (this._videoElement) {
+			this._videoElement.width = this._videoWidth;
+			this._videoElement.height = this._videoHeight;
+		}
+	};
+
 	/**
 	 * Initializes input devices (camera and optionally microphone)
 	 */
@@ -99,17 +116,20 @@
 				//aspectRatio: {ideal: 1.3333333333},
 				frameRate: {ideal: this._fps},
 			}
-		})
-		.then((stream) => {
+		}).then((stream) => {
 			this._stream = stream;
+			// hack: reverse aspect ratio for mobile devices, this needs to be replaced with
+			// waiting for onloadedmetadata
+			if (this._isiPhone) {
+				this.adaptDimensions(this._videoHeight, this._videoWidth);
+			}
 			this._videoElement = attachMediaStream(this._videoElement, stream);
-			if (this._audio && !this._hasMediaRecorder){
+			if (this._audio && !this._hasMediaRecorder) {
 				var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 				var sourceNode = audioCtx.createMediaStreamSource(stream);
 				this._wavrec = new Recorder(sourceNode);
 			}
-		})
-		.catch((e) => {
+		}).catch((e) => {
 			console.error(e);
 		});
 	};
